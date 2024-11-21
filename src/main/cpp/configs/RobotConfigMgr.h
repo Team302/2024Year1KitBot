@@ -25,11 +25,7 @@ class RobotConfigMgr
 public:
 	enum RobotIdentifier
 	{
-		CHASSISBOT_9998 = 9998,
-		COMP_BOT_302 = 302,
-		THING_1 = 1,
-		CHASSIS_BOT_9997 = 9997,
-
+		YEAR1BOT_2024 = 2024,
 		MAX_ROBOT_IDENTIFIERS
 	};
 

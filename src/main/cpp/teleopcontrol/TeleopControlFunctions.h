@@ -28,59 +28,10 @@ public:
     enum FUNCTION
     {
         UNKNOWN_FUNCTION,
-        ROBOT_ORIENTED_DRIVE,
-        HOLONOMIC_DRIVE_FORWARD,
-        HOLONOMIC_DRIVE_ROTATE,
-        HOLONOMIC_DRIVE_STRAFE,
-        RESET_POSITION,
-        HOLD_POSITION,
-        SLOW_MODE,
-        AUTO_TURN_FORWARD,
-        AUTO_TURN_BACKWARD,
-        ALIGN_TO_AMP,
-        ALIGN_TO_CENTER_STAGE_TRAP,
-        ALIGN_TO_LEFT_STAGE_TRAP,
-        ALIGN_TO_RIGHT_STAGE_TRAP,
-        ALIGN_FLOOR_GAME_PIECE,
-        // Scoring states
-        DEBUG_INC_P,
-        DEBUG_DEC_P,
-        DEBUG_INC_I,
-        DEBUG_DEC_I, // Scoring states
-        // tip correction controls
-        TIPCORRECTION_TOGGLE,
-        // Example Mechanism
-        EXAMPLE_MECH_FORWARD,
-        EXAMPLE_MECH_REVERSE,
-        // Cresendo Modes
-        CLIMB_MODE,
-        MANUAL_MODE,
-        SCORING_MODE,
-        DRIVE_TO_NOTE,
-
-        TURN_TO_PASS_ANGLE,
+        ARCADE_THROTTLE,
+        ARCADE_STEER,
         READY,
         INTAKE,
-        EXPEL,
-        AUTO_LAUNCH,
-        MANUAL_LAUNCH,
-        PASS,
-        HIGH_PASS,
-        LOW_PASS,
-        PREP_PLACE,
-        PLACE,
-        AUTO_SPEAKER,
-        AUTO_AMP,
-        AUTO_STAGE,
-        MANUAL_CLIMB,
-        MANUAL_PLACE,
-        MANUAL_FEED,
-        LAUNCH_ANGLE,
-        ELEVATOR,
-        AUTO_CLIMB,
-        READY_PASS,
-
-        MANUAL_LAUNCH_INC,
-        MANUAL_LAUNCH_DEC,
+        EXPEL
     };
 };

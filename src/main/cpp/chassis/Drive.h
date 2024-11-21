@@ -15,40 +15,21 @@
 //====================================================================================================================================================
 
 #pragma once
-#include <vector>
 
-#include "frc/DriverStation.h"
-#include "robotstate/RobotStateChanges.h"
+#include "units/acceleration.h"
+#include "chassis/CANDriveTrain.h"
+#include "teleopcontrol/TeleopControl.h"
+#include "frc/BuiltInAccelerometer.h"
 
-// class SwerveChassis;
-class IRobotStateChangeSubscriber;
-class RobotStateChangeBroker;
-class TeleopControl;
-
-class RobotState
+class Drive
 {
 public:
-    void Init();
-    void Run();
-    static RobotState *GetInstance();
-    void RegisterForStateChanges(IRobotStateChangeSubscriber *subscriber, RobotStateChanges::StateChange change);
-    void PublishStateChange(RobotStateChanges::StateChange change, int newValue);
+    Drive();
+    virtual ~Drive() = default;
+
+    void Periodic();
 
 private:
-    void PublishGameStateChanges();
-    void PublishScoringMode(TeleopControl *controller);
-    void PublishClimbMode(TeleopControl *controller);
-
-    RobotState();
-    ~RobotState();
-
-    // SwerveChassis *m_chassis;
-    std::vector<RobotStateChangeBroker *> m_brokers;
-    RobotStateChanges::ScoringMode m_scoringMode;
-    RobotStateChanges::ClimbMode m_climbMode;
-    RobotStateChanges::GamePeriod m_gamePhase;
-
-    bool m_scoringModeButtonReleased;
-    bool m_climbModeButtonReleased;
-    static RobotState *m_instance;
+    CANDrivetrain m_chassis;
+    TeleopControl *m_controller;
 };
