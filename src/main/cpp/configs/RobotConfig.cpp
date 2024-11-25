@@ -15,7 +15,6 @@
 //====================================================================================================================================================
 
 #include "configs/RobotConfig.h"
-#include "chassis/SwerveChassis.h"
 
 RobotConfig::RobotConfig()
 {
@@ -92,15 +91,6 @@ void RobotConfig::DefineMechanisms()
 
 void RobotConfig::DefineLEDs()
 {
-}
-
-SwerveChassis *RobotConfig::GetSwerveChassis() const
-{
-    return nullptr;
-}
-IChassis *RobotConfig::GetIChassis() const
-{
-    return nullptr;
 }
 
 IDragonMotorController *RobotConfig::GetMotorController(RobotElementNames::MOTOR_CONTROLLER_USAGE usage)

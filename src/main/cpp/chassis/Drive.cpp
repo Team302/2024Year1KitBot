@@ -14,41 +14,18 @@
 // OR OTHER DEALINGS IN THE SOFTWARE.
 //====================================================================================================================================================
 
-#pragma once
-#include <vector>
+#include "chassis/Drive.h"
+#include "teleopcontrol/TeleopControl.h"
 
-#include "frc/DriverStation.h"
-#include "robotstate/RobotStateChanges.h"
-
-// class SwerveChassis;
-class IRobotStateChangeSubscriber;
-class RobotStateChangeBroker;
-class TeleopControl;
-
-class RobotState
+Drive::Drive(
+    CANDrivetrain *chassis,
+    TeleopControl *controller) : m_chassis(chassis), m_controller(controller)
 {
-public:
-    void Init();
-    void Run();
-    static RobotState *GetInstance();
-    void RegisterForStateChanges(IRobotStateChangeSubscriber *subscriber, RobotStateChanges::StateChange change);
-    void PublishStateChange(RobotStateChanges::StateChange change, int newValue);
+}
+void Drive::Periodic()
+{
+    auto throttle = m_controller->GetAxisValue(TeleopControlFunctions::FUNCTION::ARCADE_THROTTLE);
+    auto steer = m_controller->GetAxisValue(TeleopControlFunctions::FUNCTION::ARCADE_STEER);
 
-private:
-    void PublishGameStateChanges();
-    void PublishScoringMode(TeleopControl *controller);
-    void PublishClimbMode(TeleopControl *controller);
-
-    RobotState();
-    ~RobotState();
-
-    // SwerveChassis *m_chassis;
-    std::vector<RobotStateChangeBroker *> m_brokers;
-    RobotStateChanges::ScoringMode m_scoringMode;
-    RobotStateChanges::ClimbMode m_climbMode;
-    RobotStateChanges::GamePeriod m_gamePhase;
-
-    bool m_scoringModeButtonReleased;
-    bool m_climbModeButtonReleased;
-    static RobotState *m_instance;
-};
+    m_chassis->ArcadeDrive(throttle, steer);
+}

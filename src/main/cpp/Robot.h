@@ -17,16 +17,17 @@
 #pragma once
 
 #include <frc/TimedRobot.h>
+#include "chassis/Drive.h"
 
-class CyclePrimitives;
-class HolonomicDrive;
-class SwerveChassis;
+#include "chassis/CANDrivetrain.h"
+#include "mechanisms/notemgr/CANLauncher.h"
+
+// class CyclePrimitives;
 class TeleopControl;
 class FMSData;
-class DragonField;
+// class DragonField;
 class AutonPreviewer;
 class RobotState;
-class SomeMech;
 class RobotDefinition;
 class DragonDataLoggerMgr;
 
@@ -61,16 +62,14 @@ private:
     void LogCameraData();
 
     TeleopControl *m_controller;
-    SwerveChassis *m_chassis;
-    CyclePrimitives *m_cyclePrims;
-    HolonomicDrive *m_holonomic;
 
     FMSData *m_fmsData;
-    DragonField *m_field;
-    AutonPreviewer *m_previewer;
+    // DragonField *m_field;
+    // AutonPreviewer *m_previewer;
     RobotState *m_robotState;
-    SomeMech *m_someMech;
     RobotDefinition *m_robot;
     DragonDataLoggerMgr *m_datalogger;
     bool isFMSAttached = false;
+    Drive *m_drive;
+    CANLauncher *m_launcher;
 };

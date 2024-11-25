@@ -18,12 +18,12 @@
 #include <string>
 #include <vector>
 
-#include "chassis/configs/ChassisConfig.h"
-#include "chassis/configs/ChassisConfigMgr.h"
-#include "chassis/SwerveChassis.h"
+// #include "chassis/configs/ChassisConfig.h"
+// #include "chassis/configs/ChassisConfigMgr.h"
+// #include "chassis/SwerveChassis.h"
 #include "robotstate/RobotStateChangeBroker.h"
 #include "teleopcontrol/TeleopControl.h"
-#include "utils/DragonField.h"
+// #include "utils/DragonField.h"
 #include "hw/factories/CompressorFactory.h"
 
 using frc::DriverStation;
@@ -39,13 +39,13 @@ RobotState *RobotState::GetInstance()
     return RobotState::m_instance;
 }
 
-RobotState::RobotState() : m_chassis(nullptr),
-                           m_brokers(),
-                           m_scoringMode(RobotStateChanges::ScoringMode::Launcher),
-                           m_climbMode(RobotStateChanges::ClimbMode::ClimbModeOff),
-                           m_gamePhase(RobotStateChanges::Disabled),
-                           m_scoringModeButtonReleased(true),
-                           m_climbModeButtonReleased(true)
+RobotState::RobotState() :             // m_chassis(nullptr),
+                           m_brokers() //,
+                                       // m_scoringMode(RobotStateChanges::ScoringMode::Launcher),
+// m_climbMode(RobotStateChanges::ClimbMode::ClimbModeOff),
+// m_gamePhase(RobotStateChanges::Disabled),
+// m_scoringModeButtonReleased(true),
+// m_climbModeButtonReleased(true)
 {
     m_brokers.reserve(RobotStateChanges::LoopCounter);
     auto start = static_cast<int>(RobotStateChanges::DesiredScoringMode);
@@ -67,12 +67,13 @@ RobotState::~RobotState()
 
 void RobotState::Init()
 {
-    auto chassisConfig = ChassisConfigMgr::GetInstance()->GetCurrentConfig();
-    m_chassis = chassisConfig != nullptr ? chassisConfig->GetSwerveChassis() : nullptr;
+    // auto chassisConfig = ChassisConfigMgr::GetInstance()->GetCurrentConfig();
+    // m_chassis = chassisConfig != nullptr ? chassisConfig->GetSwerveChassis() : nullptr;
 }
 
 void RobotState::Run()
 {
+    /**
     PublishGameStateChanges();
     if (DriverStation::IsTeleopEnabled())
     {
@@ -83,6 +84,7 @@ void RobotState::Run()
             PublishClimbMode(controller);
         }
     }
+    **/
 }
 
 void RobotState::RegisterForStateChanges(IRobotStateChangeSubscriber *subscriber, RobotStateChanges::StateChange change)
@@ -130,6 +132,7 @@ void RobotState::PublishGameStateChanges()
 }
 void RobotState::PublishScoringMode(TeleopControl *controller)
 {
+    /**
     if (controller->IsButtonPressed(TeleopControlFunctions::SCORING_MODE))
     {
         if (m_scoringModeButtonReleased)
@@ -139,10 +142,12 @@ void RobotState::PublishScoringMode(TeleopControl *controller)
         }
     }
     m_scoringModeButtonReleased = !controller->IsButtonPressed(TeleopControlFunctions::SCORING_MODE);
+    **/
 }
 
 void RobotState::PublishClimbMode(TeleopControl *controller)
 {
+    /**
     if (controller->IsButtonPressed(TeleopControlFunctions::CLIMB_MODE))
     {
         if (m_climbModeButtonReleased)
@@ -158,4 +163,5 @@ void RobotState::PublishClimbMode(TeleopControl *controller)
         }
     }
     m_climbModeButtonReleased = !controller->IsButtonPressed(TeleopControlFunctions::CLIMB_MODE);
+    **/
 }

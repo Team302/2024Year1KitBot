@@ -16,9 +16,6 @@
 
 #pragma once
 
-#include "chassis/SwerveChassis.h"
-#include "chassis/IChassis.h"
-
 #include "configs/RobotElementNames.h"
 
 #include "hw/interfaces/IDragonMotorController.h"
@@ -38,9 +35,6 @@ public:
     ~RobotConfig();
 
     void BuildRobot();
-
-    virtual SwerveChassis *GetSwerveChassis() const;
-    virtual IChassis *GetIChassis() const;
 
     virtual IDragonMotorController *GetMotorController(RobotElementNames::MOTOR_CONTROLLER_USAGE usage);
     virtual DragonSolenoid *GetSolenoid(RobotElementNames::SOLENOID_USAGE usage);

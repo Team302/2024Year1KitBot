@@ -21,9 +21,7 @@
 #include "utils/logging/Logger.h"
 #include "configs/RobotConfigMgr.h"
 #include "configs/RobotConfig.h"
-#include "configs/RobotConfigCompBot_302.h"
-#include "configs/RobotConfigThing_1.h"
-#include "configs/RobotConfigChassisBot_9997.h"
+#include "configs/RobotConfigYear1Bot_2024.h"
 
 using namespace std;
 
@@ -45,17 +43,9 @@ void RobotConfigMgr::InitRobot ( RobotIdentifier id )
 {
 	switch ( id )
 	{
-	case RobotIdentifier::COMP_BOT_302:
-		Logger::GetLogger()->LogData ( LOGGER_LEVEL::PRINT, string ( "Initializing robot " ), string ( "COMP_BOT_302" ), string ( "" ) );
-		m_config = new RobotConfigCompBot_302();
-		break;
-	case RobotIdentifier::THING_1:
-		Logger::GetLogger()->LogData ( LOGGER_LEVEL::PRINT, string ( "Initializing robot " ), string ( "THING_1" ), string ( "" ) );
-		m_config = new RobotConfigThing_1();
-		break;
-	case RobotIdentifier::CHASSIS_BOT_9997:
-		Logger::GetLogger()->LogData ( LOGGER_LEVEL::PRINT, string ( "Initializing robot " ), string ( "CHASSIS_BOT_9997" ), string ( "" ) );
-		m_config = new RobotConfigChassisBot_9997();
+	case RobotIdentifier::YEAR1BOT_2024:
+		Logger::GetLogger()->LogData ( LOGGER_LEVEL::PRINT, string ( "Initializing robot " ), string ( "YEAR1BOT_2024" ), string ( "" ) );
+		m_config = new RobotConfigYear1Bot_2024();
 		break;
 
 	default:
