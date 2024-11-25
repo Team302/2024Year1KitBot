@@ -17,7 +17,7 @@
 #pragma once
 
 #include "units/acceleration.h"
-#include "chassis/CANDriveTrain.h"
+#include "chassis/CANDrivetrain.h"
 #include "teleopcontrol/TeleopControl.h"
 #include "frc/BuiltInAccelerometer.h"
 
