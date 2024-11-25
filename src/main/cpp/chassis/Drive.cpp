@@ -17,7 +17,9 @@
 #include "chassis/Drive.h"
 #include "teleopcontrol/TeleopControl.h"
 
-Drive::Drive() : m_controller(TeleopControl::GetInstance())
+Drive::Drive(
+    CANDrivetrain *chassis,
+    TeleopControl *controller) : m_chassis(chassis), m_controller(controller)
 {
 }
 void Drive::Periodic()
@@ -25,5 +27,5 @@ void Drive::Periodic()
     auto throttle = m_controller->GetAxisValue(TeleopControlFunctions::FUNCTION::ARCADE_THROTTLE);
     auto steer = m_controller->GetAxisValue(TeleopControlFunctions::FUNCTION::ARCADE_STEER);
 
-    m_chassis.ArcadeDrive(throttle, steer);
+    m_chassis->ArcadeDrive(throttle, steer);
 }

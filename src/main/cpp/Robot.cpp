@@ -7,17 +7,16 @@
 
 #include <string>
 
+#include "chassis/CANDrivetrain.h"
+#include "mechanisms/notemgr/CANLauncher.h"
+
 // #include "auton/AutonPreviewer.h"
 // #include "auton/CyclePrimitives.h"
 // #include "chassis/configs/ChassisConfig.h"
 // #include "chassis/configs/ChassisConfigMgr.h"
-// #include "chassis/HolonomicDrive.h"
-// #include "chassis/SwerveChassis.h"
 #include "configs/RobotConfig.h"
 #include "configs/RobotConfigMgr.h"
 // #include "driveteamfeedback/DriverFeedback.h"
-// #include "mechanisms/noteManager/generated/noteManagerGen.h"
-// #include "mechanisms/ClimberManager/generated/ClimberManagerGen.h"
 #include "PeriodicLooper.h"
 #include "Robot.h"
 #include "robotstate/RobotState.h"
@@ -28,7 +27,6 @@
 #include "utils/logging/Logger.h"
 #include "utils/logging/LoggerData.h"
 #include "utils/logging/LoggerEnums.h"
-// #include "DragonVision/DragonVision.h"
 #include "utils/logging/DataTrace.h"
 
 using std::string;
@@ -127,14 +125,17 @@ void Robot::AutonomousPeriodic()
 void Robot::TeleopInit()
 {
     m_drive->Periodic();
+    m_launcher->RunCurrentState();
 
-    PeriodicLooper::GetInstance()->TeleopRunCurrentState();
+    // PeriodicLooper::GetInstance()->TeleopRunCurrentState();
 }
 
 void Robot::TeleopPeriodic()
 {
     m_drive->Periodic();
-    PeriodicLooper::GetInstance()->TeleopRunCurrentState();
+    m_launcher->RunCurrentState();
+
+    // PeriodicLooper::GetInstance()->TeleopRunCurrentState();
 }
 
 void Robot::DisabledInit()
@@ -184,18 +185,8 @@ void Robot::InitializeRobot()
     int32_t teamNumber = frc::RobotController::GetTeamNumber();
     RobotConfigMgr::GetInstance()->InitRobot((RobotConfigMgr::RobotIdentifier)teamNumber);
 
-    m_drive = new Drive();
-
-    /**
-    ChassisConfigMgr::GetInstance()->InitChassis(static_cast<RobotConfigMgr::RobotIdentifier>(teamNumber));
-    auto chassisConfig = ChassisConfigMgr::GetInstance()->GetCurrentConfig();
-    m_chassis = chassisConfig != nullptr ? chassisConfig->GetSwerveChassis() : nullptr;
-    m_holonomic = nullptr;
-    if (m_chassis != nullptr)
-    {
-        m_holonomic = new HolonomicDrive();
-    }
-    **/
+    m_drive = new Drive(new CANDrivetrain(), TeleopControl::GetInstance());
+    m_launcher = new CANLauncher();
 
     m_robotState = RobotState::GetInstance();
     m_robotState->Init();
