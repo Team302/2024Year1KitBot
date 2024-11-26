@@ -20,6 +20,7 @@
 
 #include "State.h"
 #include "mechanisms/notemgr/CANLauncher.h"
+#include "frc/Timer.h"
 
 namespace noteManagerStates
 {
@@ -39,5 +40,6 @@ namespace noteManagerStates
 
 	private:
 		CANLauncher *m_mechanism;
+		frc::Timer *m_timer;
 	};
 }
