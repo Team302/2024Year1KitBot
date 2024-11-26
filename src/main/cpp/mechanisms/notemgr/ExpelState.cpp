@@ -35,18 +35,20 @@ using namespace noteManagerStates;
 /// @brief information about the control (open loop, closed loop position, closed loop velocity, etc.) for a mechanism state
 ExpelState::ExpelState(std::string stateName,
 					   int stateId,
-					   CANLauncher *mech) : State(stateName, stateId), m_mechanism(mech)
+					   CANLauncher *mech) : State(stateName, stateId), m_mechanism(mech), m_timer(new frc::Timer())
 {
 }
 
 void ExpelState::Init()
 {
+	m_timer->Restart();
 }
 
 void ExpelState::Run()
 {
 	m_mechanism->SetLaunchWheel(1.0);
-	m_mechanism->SetFeedWheel(1.0);
+	auto speed = (m_timer->Get() > 3_s) ? 1.0 : 0.0;
+	m_mechanism->SetFeedWheel(speed);
 }
 
 void ExpelState::Exit()
