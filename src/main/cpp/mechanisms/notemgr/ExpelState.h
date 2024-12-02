@@ -22,24 +22,21 @@
 #include "mechanisms/notemgr/CANLauncher.h"
 #include "frc/Timer.h"
 
-namespace noteManagerStates
+class ExpelState : public State
 {
-	class ExpelState : public State
-	{
-	public:
-		ExpelState() = delete;
-		ExpelState(std::string stateName,
-				   int stateId,
-				   CANLauncher *mech);
-		~ExpelState() = default;
-		void Init() override;
-		void Run() override;
-		void Exit() override;
-		bool AtTarget() override;
-		bool IsTransitionCondition(bool considerGamepadTransitions) override;
+public:
+	ExpelState() = delete;
+	ExpelState(std::string stateName,
+			   int stateId,
+			   CANLauncher *mech);
+	~ExpelState() = default;
+	void Init() override;
+	void Run() override;
+	void Exit() override;
+	bool AtTarget() override;
+	bool IsTransitionCondition(bool considerGamepadTransitions) override;
 
-	private:
-		CANLauncher *m_mechanism;
-		frc::Timer *m_timer;
-	};
-}
+private:
+	CANLauncher *m_mechanism;
+	frc::Timer *m_timer;
+};

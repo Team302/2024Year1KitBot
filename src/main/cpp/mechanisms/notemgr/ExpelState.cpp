@@ -29,7 +29,6 @@
 // Third Party Includes
 
 using namespace std;
-using namespace noteManagerStates;
 
 /// @class ExampleForwardState
 /// @brief information about the control (open loop, closed loop position, closed loop velocity, etc.) for a mechanism state

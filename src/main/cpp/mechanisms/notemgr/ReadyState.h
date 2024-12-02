@@ -21,23 +21,20 @@
 #include "State.h"
 #include "mechanisms/notemgr/CANLauncher.h"
 
-namespace noteManagerStates
+class ReadyState : public State
 {
-	class ReadyState : public State
-	{
-	public:
-		ReadyState() = delete;
-		ReadyState(std::string stateName,
-				   int stateId,
-				   CANLauncher *mech);
-		~ReadyState() = default;
-		void Init() override;
-		void Run() override;
-		void Exit() override;
-		bool AtTarget() override;
-		bool IsTransitionCondition(bool considerGamepadTransitions) override;
+public:
+	ReadyState() = delete;
+	ReadyState(std::string stateName,
+			   int stateId,
+			   CANLauncher *mech);
+	~ReadyState() = default;
+	void Init() override;
+	void Run() override;
+	void Exit() override;
+	bool AtTarget() override;
+	bool IsTransitionCondition(bool considerGamepadTransitions) override;
 
-	private:
-		CANLauncher *m_mechanism;
-	};
-}
+private:
+	CANLauncher *m_mechanism;
+};

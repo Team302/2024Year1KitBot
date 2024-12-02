@@ -29,7 +29,6 @@
 // Third Party Includes
 
 using namespace std;
-using namespace noteManagerStates;
 
 /// @class ExampleForwardState
 /// @brief information about the control (open loop, closed loop position, closed loop velocity, etc.) for a mechanism state
@@ -45,8 +44,8 @@ void ReadyState::Init()
 
 void ReadyState::Run()
 {
-	m_mechanism->SetLaunchWheel(1.0);
-	m_mechanism->SetFeedWheel(1.0);
+	m_mechanism->SetLaunchWheel(0.0);
+	m_mechanism->SetFeedWheel(0.0);
 }
 
 void ReadyState::Exit()
