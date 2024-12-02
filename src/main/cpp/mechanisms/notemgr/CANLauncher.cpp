@@ -3,6 +3,9 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "mechanisms/notemgr/CANLauncher.h"
+#include "mechanisms/notemgr/ExpelState.h"
+#include "mechanisms/notemgr/IntakeState.h"
+#include "mechanisms/notemgr/ReadyState.h"
 
 using namespace LauncherConstants;
 
@@ -17,6 +20,8 @@ CANLauncher::CANLauncher()
 {
   m_launchWheel.SetSmartCurrentLimit(kLauncherCurrentLimit);
   m_feedWheel.SetSmartCurrentLimit(kFeedCurrentLimit);
+
+  CreateAndRegisterStates();
 }
 
 // An accessor method to set the speed (technically the output percentage) of
@@ -44,4 +49,20 @@ void CANLauncher::Stop()
 void CANLauncher::SetCurrentState(int state, bool run)
 {
   StateMgr::SetCurrentState(state, run);
+}
+
+void CANLauncher::CreateAndRegisterStates()
+{
+  auto ready = new ReadyState("Ready", 0, this);
+  auto intake = new IntakeState("Intake", 1, this);
+  auto launch = new ExpelState("Launch", 2, this);
+
+  ready->RegisterTransitionState(intake);
+  ready->RegisterTransitionState(launch);
+
+  launch->RegisterTransitionState(ready);
+
+  intake->RegisterTransitionState(ready);
+
+  SetCurrentState(0, false);
 }

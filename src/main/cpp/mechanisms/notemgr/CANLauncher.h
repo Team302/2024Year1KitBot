@@ -37,6 +37,8 @@ public:
   // individual accessors with speed = 0 instead
   void Stop();
 
+  void CreateAndRegisterStates();
+
 protected:
   void SetCurrentState(int state, bool run) override;
 
