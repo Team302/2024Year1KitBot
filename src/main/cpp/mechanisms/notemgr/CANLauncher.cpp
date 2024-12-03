@@ -69,4 +69,6 @@ void CANLauncher::CreateAndRegisterStates()
   intake->RegisterTransitionState(ready);
 
   SetCurrentState(0, false);
+
+  Init(this);
 }
