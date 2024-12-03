@@ -46,10 +46,10 @@ namespace LauncherConstants
     constexpr int kFeedCurrentLimit = 80;
 
     // Speeds for wheels when intaking and launching. Intake speeds are negative to run the wheels in reverse
-    constexpr double kLauncherSpeed = 1;
-    constexpr double kLaunchFeederSpeed = 1;
-    constexpr double kIntakeLauncherSpeed = -1;
-    constexpr double kIntakeFeederSpeed = -.2;
+    constexpr double kLauncherSpeed = -1;
+    constexpr double kLaunchFeederSpeed = -1;
+    constexpr double kIntakeLauncherSpeed = 1;
+    constexpr double kIntakeFeederSpeed = .2;
 
     constexpr units::second_t kLauncherDelay = 1_s;
 } // namespace LauncherConstants

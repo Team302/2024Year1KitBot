@@ -44,8 +44,8 @@ void IntakeState::Init()
 
 void IntakeState::Run()
 {
-	m_mechanism->SetLaunchWheel(-1.0);
-	m_mechanism->SetFeedWheel(-1.0);
+	m_mechanism->SetLaunchWheel(1.0);
+	m_mechanism->SetFeedWheel(1.0);
 }
 
 void IntakeState::Exit()

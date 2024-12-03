@@ -114,15 +114,9 @@ void StateMgr::CheckForGamepadTransitions()
 /// @return void
 void StateMgr::SetCurrentState(int stateID, bool run)
 {
-    Logger::GetLogger()->LogData(LOGGER_LEVEL::PRINT, string("Launcher State"), string("Launcher State"), string("reached"));
-    if (m_mech != nullptr)
-    {
-        Logger::GetLogger()->LogData(LOGGER_LEVEL::PRINT, string("Launcher State"), string("Launcher State"), string("not null"));
-    }
 
     if (m_mech != nullptr && stateID > -1 && stateID < static_cast<int>(m_stateVector.size()))
     {
-        Logger::GetLogger()->LogData(LOGGER_LEVEL::PRINT, string("Launcher State"), string("Launcher State"), string("reached2"));
 
         auto state = m_stateVector[stateID];
         if (state != nullptr && state != m_currentState)
@@ -137,7 +131,6 @@ void StateMgr::SetCurrentState(int stateID, bool run)
             m_currentState = state;
             m_currentStateID = stateID;
             m_currentState->Init();
-            Logger::GetLogger()->LogData(LOGGER_LEVEL::PRINT, string("Launcher State"), string("Launcher State"), state);
 
             // Run current new state if requested
             if (run)
