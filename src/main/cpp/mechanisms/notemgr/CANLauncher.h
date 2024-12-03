@@ -39,7 +39,6 @@ public:
 
   void CreateAndRegisterStates();
 
-protected:
   void SetCurrentState(int state, bool run) override;
 
 private:

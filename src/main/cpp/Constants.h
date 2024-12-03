@@ -16,37 +16,40 @@
  * they are needed.
  */
 
-namespace OperatorConstants {
-    //Port numbers for driver and operator gamepads. These correspond with the numbers on the USB tab of the DriverStation
+namespace OperatorConstants
+{
+    // Port numbers for driver and operator gamepads. These correspond with the numbers on the USB tab of the DriverStation
     constexpr int kDriverControllerPort = 0;
     constexpr int kOperatorControllerPort = 1;
-}  // namespace OperatorConstants
+} // namespace OperatorConstants
 
-namespace DrivetrainConstants {
-    //PWM ports/CAN IDs for motor controllers
-    constexpr int kLeftRearID = 1;
-    constexpr int kLeftFrontID = 2;
+namespace DrivetrainConstants
+{
+    // PWM ports/CAN IDs for motor controllers
+    constexpr int kLeftRearID = 14;
+    constexpr int kLeftFrontID = 1;
     constexpr int kRightRearID = 3;
-    constexpr int kRightFrontID = 4;
+    constexpr int kRightFrontID = 2;
 
-    //Current limit for drivetrain motors
+    // Current limit for drivetrain motors
     constexpr int kCurrentLimit = 60;
-}  // namespace DrivetrainConstants
+} // namespace DrivetrainConstants
 
- namespace LauncherConstants {
-    //PWM ports/CAN IDs for motor controllers
-    constexpr int kFeederID = 5;
-    constexpr int kLauncherID = 6;
+namespace LauncherConstants
+{
+    // PWM ports/CAN IDs for motor controllers
+    constexpr int kFeederID = 13;
+    constexpr int kLauncherID = 12;
 
-    //Current limit for launcher and feed wheels
+    // Current limit for launcher and feed wheels
     constexpr int kLauncherCurrentLimit = 80;
     constexpr int kFeedCurrentLimit = 80;
 
-    //Speeds for wheels when intaking and launching. Intake speeds are negative to run the wheels in reverse
+    // Speeds for wheels when intaking and launching. Intake speeds are negative to run the wheels in reverse
     constexpr double kLauncherSpeed = 1;
     constexpr double kLaunchFeederSpeed = 1;
     constexpr double kIntakeLauncherSpeed = -1;
     constexpr double kIntakeFeederSpeed = -.2;
-	
-	constexpr units::second_t kLauncherDelay = 1_s;
+
+    constexpr units::second_t kLauncherDelay = 1_s;
 } // namespace LauncherConstants
