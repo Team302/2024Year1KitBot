@@ -24,6 +24,7 @@
 #include "mechanisms/base/BaseMech.h"
 #include "mechanisms/base/StateMgr.h"
 #include "utils/logging/Logger.h"
+#include "mechanisms/notemgr/CANLauncher.h"
 
 // Third Party Includes
 
@@ -39,7 +40,8 @@ StateMgr::StateMgr() : m_checkGamePadTransitions(true),
                        m_currentStateID(0)
 {
 }
-void StateMgr::Init(BaseMech *mech)
+// void StateMgr::Init(BaseMech *mech)
+void StateMgr::Init(CANLauncher *mech)
 {
     m_mech = mech;
     if (!m_stateVector.empty())

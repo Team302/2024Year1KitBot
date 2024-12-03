@@ -57,6 +57,10 @@ void CANLauncher::CreateAndRegisterStates()
   auto intake = new IntakeState("Intake", 1, this);
   auto launch = new ExpelState("Launch", 2, this);
 
+  AddToStateVector(ready);
+  AddToStateVector(intake);
+  AddToStateVector(launch);
+
   ready->RegisterTransitionState(intake);
   ready->RegisterTransitionState(launch);
 
