@@ -70,5 +70,5 @@ void CANLauncher::CreateAndRegisterStates()
 
   SetCurrentState(0, false);
 
-  Init(this);
+  Init();
 }

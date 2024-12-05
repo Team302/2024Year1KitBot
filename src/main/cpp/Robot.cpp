@@ -125,7 +125,6 @@ void Robot::AutonomousPeriodic()
 void Robot::TeleopInit()
 {
     m_drive->Periodic();
-    m_launcher->SetCurrentState(1, false);
     m_launcher->RunCurrentState();
 
     // PeriodicLooper::GetInstance()->TeleopRunCurrentState();
