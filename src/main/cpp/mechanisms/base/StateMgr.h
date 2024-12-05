@@ -24,8 +24,6 @@
 #include "utils/logging/LoggableItem.h"
 
 // forward declare
-// class BaseMech;
-class CANLauncher;
 class PrimitiveParams;
 
 // Third Party Includes
@@ -35,8 +33,7 @@ class StateMgr : public LoggableItem
 public:
     StateMgr();
     ~StateMgr() = default;
-    // void Init(BaseMech *mech);
-    void Init(CANLauncher *mech);
+    void Init();
 
     virtual void RunCommonTasks();
 
@@ -72,8 +69,6 @@ protected:
     std::vector<State *> GetStateVector() { return m_stateVector; };
 
 private:
-    // BaseMech *m_mech;
-    CANLauncher *m_mech;
     State *m_currentState;
     std::vector<State *> m_stateVector;
     int m_currentStateID;
