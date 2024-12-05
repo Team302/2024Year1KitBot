@@ -21,10 +21,11 @@
 // FRC includes
 
 // Team 302 includes
-#include "mechanisms/notemgr/ReadyState.h"
+#include "mechanisms/climber/ReadyState.h"
 #include "teleopcontrol/TeleopControl.h"
 #include "teleopcontrol/TeleopControlFunctions.h"
 #include "utils/logging/Logger.h"
+using namespace ClimberConstants;
 
 // Third Party Includes
 
@@ -32,32 +33,31 @@ using namespace std;
 
 /// @class ExampleForwardState
 /// @brief information about the control (open loop, closed loop position, closed loop velocity, etc.) for a mechanism state
-ReadyState::ReadyState(std::string stateName,
-					   int stateId,
-					   CANLauncher *mech) : State(stateName, stateId), m_mechanism(mech)
+ClimberReadyState::ClimberReadyState(std::string stateName,
+									 int stateId,
+									 CANClimber *mech) : State(stateName, stateId), m_mechanism(mech)
 {
 }
 
-void ReadyState::Init()
+void ClimberReadyState::Init()
 {
 }
 
-void ReadyState::Run()
+void ClimberReadyState::Run()
 {
-	m_mechanism->SetLaunchWheel(0.0);
-	m_mechanism->SetFeedWheel(0.0);
+	m_mechanism->SetClimberMotor(0.0);
 }
 
-void ReadyState::Exit()
+void ClimberReadyState::Exit()
 {
 }
 
-bool ReadyState::AtTarget()
+bool ClimberReadyState::AtTarget()
 {
 	return true;
 }
 
-bool ReadyState::IsTransitionCondition(bool considerGamepadTransitions)
+bool ClimberReadyState::IsTransitionCondition(bool considerGamepadTransitions)
 {
 	// To get the current state use m_mechanism->GetCurrentState()
 

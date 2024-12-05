@@ -28,10 +28,7 @@ public:
   CANClimber();
 
   // An accessor method to set the speed (technically the output percentage) of the launch wheel
-  void SetLaunchWheel(double speed);
-
-  // An accessor method to set the speed (technically the output percentage) of the feed wheel
-  void SetFeedWheel(double speed);
+  void SetClimberMotor(double speed);
 
   // A helper method to stop both wheels. You could skip having a method like this and call the
   // individual accessors with speed = 0 instead

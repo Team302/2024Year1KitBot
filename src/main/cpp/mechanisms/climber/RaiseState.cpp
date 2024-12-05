@@ -21,10 +21,11 @@
 // FRC includes
 
 // Team 302 includes
-#include "mechanisms/notemgr/ExpelState.h"
+#include "mechanisms/climber/RaiseState.h"
 #include "teleopcontrol/TeleopControl.h"
 #include "teleopcontrol/TeleopControlFunctions.h"
 #include "utils/logging/Logger.h"
+using namespace ClimberConstants;
 
 // Third Party Includes
 
@@ -32,34 +33,31 @@ using namespace std;
 
 /// @class ExampleForwardState
 /// @brief information about the control (open loop, closed loop position, closed loop velocity, etc.) for a mechanism state
-ExpelState::ExpelState(std::string stateName,
+RaiseState::RaiseState(std::string stateName,
 					   int stateId,
-					   CANLauncher *mech) : State(stateName, stateId), m_mechanism(mech), m_timer(new frc::Timer())
+					   CANClimber *mech) : State(stateName, stateId), m_mechanism(mech)
 {
 }
 
-void ExpelState::Init()
-{
-	m_timer->Restart();
-}
-
-void ExpelState::Run()
-{
-	m_mechanism->SetLaunchWheel(-1.0);
-	auto speed = (m_timer->Get() > 3_s) ? 1.0 : 0.0;
-	m_mechanism->SetFeedWheel(-speed);
-}
-
-void ExpelState::Exit()
+void RaiseState::Init()
 {
 }
 
-bool ExpelState::AtTarget()
+void RaiseState::Run()
+{
+	m_mechanism->SetClimberMotor(kClimberMotorSpeed);
+}
+
+void RaiseState::Exit()
+{
+}
+
+bool RaiseState::AtTarget()
 {
 	return true;
 }
 
-bool ExpelState::IsTransitionCondition(bool considerGamepadTransitions)
+bool RaiseState::IsTransitionCondition(bool considerGamepadTransitions)
 {
 	// To get the current state use m_mechanism->GetCurrentState()
 

@@ -25,6 +25,7 @@
 #include "teleopcontrol/TeleopControl.h"
 #include "teleopcontrol/TeleopControlFunctions.h"
 #include "utils/logging/Logger.h"
+using namespace ClimberConstants;
 
 // Third Party Includes
 
@@ -34,7 +35,7 @@ using namespace std;
 /// @brief information about the control (open loop, closed loop position, closed loop velocity, etc.) for a mechanism state
 ClimbState::ClimbState(std::string stateName,
 					   int stateId,
-					   CANLauncher *mech) : State(stateName, stateId), m_mechanism(mech)
+					   CANClimber *mech) : State(stateName, stateId), m_mechanism(mech)
 {
 }
 
@@ -44,8 +45,7 @@ void ClimbState::Init()
 
 void ClimbState::Run()
 {
-	m_mechanism->SetLaunchWheel(1.0);
-	m_mechanism->SetFeedWheel(1.0);
+	m_mechanism->SetClimberMotor(kClimberMotorSpeed);
 }
 
 void ClimbState::Exit()

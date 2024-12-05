@@ -7,7 +7,7 @@
 #include "mechanisms/climber/ClimbState.h"
 #include "mechanisms/climber/ReadyState.h"
 
-using namespace LauncherConstants;
+using namespace ClimberConstants;
 
 std::map<std::string, CANClimber::STATE_NAMES> CANClimber::StringToSTATE_NAMESEnumMap{
     {"STATE_READY", CANClimber::STATE_NAMES::STATE_READY},
@@ -15,59 +15,49 @@ std::map<std::string, CANClimber::STATE_NAMES> CANClimber::StringToSTATE_NAMESEn
     {"STATE_RAISE", CANClimber::STATE_NAMES::STATE_RAISE}};
 
 CANClimber::CANClimber()
-    m_climbermotor{kClimberMotorID, rev::CANSparkMax::MotorType::kBrushed};
+    : m_climbermotor{kClimberMotorID, rev::CANSparkMax::MotorType::kBrushed}
 {
-  m_launchWheel.SetSmartCurrentLimit(kLauncherCurrentLimit);
-  m_feedWheel.SetSmartCurrentLimit(kFeedCurrentLimit);
-
+  m_climbermotor.SetSmartCurrentLimit(kClimberMotorSpeed);
   CreateAndRegisterStates();
 }
 
 // An accessor method to set the speed (technically the output percentage) of
 // the launch wheel
-void CANLauncher::SetLaunchWheel(double speed)
+void CANClimber::SetClimberMotor(double speed)
 {
-  m_launchWheel.Set(speed);
-}
-
-// An accessor method to set the speed (technically the output percentage) of
-// the feed wheel
-void CANLauncher::SetFeedWheel(double speed)
-{
-  m_feedWheel.Set(speed);
+  m_climbermotor.Set(speed);
 }
 
 // A helper method to stop both wheels. You could skip having a method like this
 // and call the individual accessors with speed = 0 instead
-void CANLauncher::Stop()
+void CANClimber::Stop()
 {
-  m_launchWheel.Set(0);
-  m_feedWheel.Set(0);
+  m_climbermotor.Set(0);
 }
 
-void CANLauncher::SetCurrentState(int state, bool run)
+void CANClimber::SetCurrentState(int state, bool run)
 {
   StateMgr::SetCurrentState(state, run);
 }
 
-void CANLauncher::CreateAndRegisterStates()
+void CANClimber::CreateAndRegisterStates()
 {
-  auto ready = new ReadyState("Ready", 0, this);
-  auto intake = new IntakeState("Intake", 1, this);
-  auto launch = new ExpelState("Launch", 2, this);
+  auto ready = new ClimberReadyState("Ready", 0, this);
+  auto climb = new ClimbState("Climb", 1, this);
+  auto raise = new RaiseState("Raise", 2, this);
 
   AddToStateVector(ready);
-  AddToStateVector(intake);
-  AddToStateVector(launch);
+  AddToStateVector(climb);
+  AddToStateVector(raise);
 
-  ready->RegisterTransitionState(intake);
-  ready->RegisterTransitionState(launch);
+  ready->RegisterTransitionState(climb);
+  ready->RegisterTransitionState(raise);
 
-  launch->RegisterTransitionState(ready);
+  raise->RegisterTransitionState(ready);
 
-  intake->RegisterTransitionState(ready);
+  climb->RegisterTransitionState(ready);
 
   SetCurrentState(0, false);
 
-  Init(this);
+  Init();
 }

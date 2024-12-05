@@ -19,7 +19,7 @@
 #include <string>
 
 #include "State.h"
-#include "mechanisms/climber/RaiseState.h"
+#include "mechanisms/climber/CANClimber.h"
 #include "frc/Timer.h"
 
 class RaiseState : public State
@@ -28,7 +28,7 @@ public:
 	RaiseState() = delete;
 	RaiseState(std::string stateName,
 			   int stateId,
-			   RaiseState *mech);
+			   CANClimber *mech);
 	~RaiseState() = default;
 	void Init() override;
 	void Run() override;
@@ -37,6 +37,5 @@ public:
 	bool IsTransitionCondition(bool considerGamepadTransitions) override;
 
 private:
-	RaiseState *m_mechanism;
-	frc::Timer *m_timer;
+	CANClimber *m_mechanism;
 };

@@ -19,16 +19,16 @@
 #include <string>
 
 #include "State.h"
-#include "mechanisms/notemgr/CANLauncher.h"
+#include "mechanisms/climber/CANClimber.h"
 
-class ReadyState : public State
+class ClimberReadyState : public State
 {
 public:
-	ReadyState() = delete;
-	ReadyState(std::string stateName,
-			   int stateId,
-			   CANLauncher *mech);
-	~ReadyState() = default;
+	ClimberReadyState() = delete;
+	ClimberReadyState(std::string stateName,
+					  int stateId,
+					  CANClimber *mech);
+	~ClimberReadyState() = default;
 	void Init() override;
 	void Run() override;
 	void Exit() override;
@@ -36,5 +36,5 @@ public:
 	bool IsTransitionCondition(bool considerGamepadTransitions) override;
 
 private:
-	CANLauncher *m_mechanism;
+	CANClimber *m_mechanism;
 };
