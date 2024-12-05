@@ -21,10 +21,8 @@
 
 // Team 302 includes
 #include "State.h"
-#include "mechanisms/base/BaseMech.h"
 #include "mechanisms/base/StateMgr.h"
 #include "utils/logging/Logger.h"
-#include "mechanisms/notemgr/CANLauncher.h"
 
 // Third Party Includes
 
@@ -34,16 +32,13 @@ State *myState;
 
 /// @brief    initialize the state manager, parse the configuration file and create the states.
 StateMgr::StateMgr() : m_checkGamePadTransitions(true),
-                       m_mech(nullptr),
                        m_currentState(),
                        m_stateVector(),
                        m_currentStateID(0)
 {
 }
-// void StateMgr::Init(BaseMech *mech)
-void StateMgr::Init(CANLauncher *mech)
+void StateMgr::Init()
 {
-    m_mech = mech;
     if (!m_stateVector.empty())
     {
         m_currentState = m_stateVector[0];
@@ -61,15 +56,12 @@ void StateMgr::RunCommonTasks()
 /// @return void
 void StateMgr::RunCurrentState()
 {
-    if (m_mech != nullptr)
-    {
-        CheckForStateTransition();
+    CheckForStateTransition();
 
-        // run the current state
-        if (m_currentState != nullptr)
-        {
-            m_currentState->Run();
-        }
+    // run the current state
+    if (m_currentState != nullptr)
+    {
+        m_currentState->Run();
     }
 }
 
@@ -115,7 +107,7 @@ void StateMgr::CheckForGamepadTransitions()
 void StateMgr::SetCurrentState(int stateID, bool run)
 {
 
-    if (m_mech != nullptr && stateID > -1 && stateID < static_cast<int>(m_stateVector.size()))
+    if (stateID > -1 && stateID < static_cast<int>(m_stateVector.size()))
     {
 
         auto state = m_stateVector[stateID];
