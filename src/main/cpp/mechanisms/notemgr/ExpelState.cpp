@@ -45,9 +45,9 @@ void ExpelState::Init()
 
 void ExpelState::Run()
 {
-	m_mechanism->SetLaunchWheel(1.0);
+	m_mechanism->SetLaunchWheel(-1.0);
 	auto speed = (m_timer->Get() > 3_s) ? 1.0 : 0.0;
-	m_mechanism->SetFeedWheel(speed);
+	m_mechanism->SetFeedWheel(-speed);
 }
 
 void ExpelState::Exit()
