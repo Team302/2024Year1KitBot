@@ -55,6 +55,8 @@ namespace LauncherConstants
 } // namespace LauncherConstants
 namespace ClimberConstants
 {
-    constexpr double kClimberMotorSpeed = 0;
-    constexpr int kClimberMotorID = 0;
+    constexpr double kClimberLowerMotorSpeed = -1;
+    constexpr double kClimberRaiseMotorSpeed = 1;
+    constexpr double kClimberMotorCurrent = 80;
+    constexpr int kClimberMotorID = 15;
 }

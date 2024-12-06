@@ -126,6 +126,7 @@ void Robot::TeleopInit()
 {
     m_drive->Periodic();
     m_launcher->RunCurrentState();
+    m_climber->RunCurrentState();
 
     // PeriodicLooper::GetInstance()->TeleopRunCurrentState();
 }
@@ -134,6 +135,7 @@ void Robot::TeleopPeriodic()
 {
     m_drive->Periodic();
     m_launcher->RunCurrentState();
+    m_climber->RunCurrentState();
 
     // PeriodicLooper::GetInstance()->TeleopRunCurrentState();
 }
@@ -187,6 +189,7 @@ void Robot::InitializeRobot()
 
     m_drive = new Drive(new CANDrivetrain(), TeleopControl::GetInstance());
     m_launcher = new CANLauncher();
+    m_climber = new CANClimber();
 
     m_robotState = RobotState::GetInstance();
     m_robotState->Init();

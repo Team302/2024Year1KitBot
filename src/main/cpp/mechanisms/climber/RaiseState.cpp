@@ -45,7 +45,7 @@ void RaiseState::Init()
 
 void RaiseState::Run()
 {
-	m_mechanism->SetClimberMotor(kClimberMotorSpeed);
+	m_mechanism->SetClimberMotor(kClimberRaiseMotorSpeed);
 }
 
 void RaiseState::Exit()
@@ -61,5 +61,5 @@ bool RaiseState::IsTransitionCondition(bool considerGamepadTransitions)
 {
 	// To get the current state use m_mechanism->GetCurrentState()
 
-	return (considerGamepadTransitions && TeleopControl::GetInstance()->IsButtonPressed(TeleopControlFunctions::EXPEL));
+	return (considerGamepadTransitions && TeleopControl::GetInstance()->IsButtonPressed(TeleopControlFunctions::CLIMBER_RAISE));
 }

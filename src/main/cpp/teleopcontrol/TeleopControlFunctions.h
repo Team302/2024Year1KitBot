@@ -32,6 +32,8 @@ public:
         ARCADE_STEER,
         READY,
         INTAKE,
-        EXPEL
+        EXPEL,
+        CLIMBER_RAISE,
+        CLIMBER_LOWER
     };
 };

@@ -17,7 +17,7 @@ std::map<std::string, CANClimber::STATE_NAMES> CANClimber::StringToSTATE_NAMESEn
 CANClimber::CANClimber()
     : m_climbermotor{kClimberMotorID, rev::CANSparkMax::MotorType::kBrushed}
 {
-  m_climbermotor.SetSmartCurrentLimit(kClimberMotorSpeed);
+  m_climbermotor.SetSmartCurrentLimit(kClimberMotorCurrent);
   CreateAndRegisterStates();
 }
 
