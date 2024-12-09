@@ -62,6 +62,6 @@ bool ClimberReadyState::IsTransitionCondition(bool considerGamepadTransitions)
 	// To get the current state use m_mechanism->GetCurrentState()
 
 	return (considerGamepadTransitions &&
-			!TeleopControl::GetInstance()->IsButtonPressed(TeleopControlFunctions::INTAKE) &&
-			!TeleopControl::GetInstance()->IsButtonPressed(TeleopControlFunctions::EXPEL));
+			!TeleopControl::GetInstance()->IsButtonPressed(TeleopControlFunctions::CLIMBER_LOWER) &&
+			!TeleopControl::GetInstance()->IsButtonPressed(TeleopControlFunctions::CLIMBER_RAISE));
 }
