@@ -20,16 +20,15 @@
 
 #include "State.h"
 #include "mechanisms/climber/CANClimber.h"
-#include "frc/Timer.h"
 
-class RaiseState : public State
+class LowerHookState : public State
 {
 public:
-	RaiseState() = delete;
-	RaiseState(std::string stateName,
-			   int stateId,
-			   CANClimber *mech);
-	~RaiseState() = default;
+	LowerHookState() = delete;
+	LowerHookState(std::string stateName,
+				   int stateId,
+				   CANClimber *mech);
+	~LowerHookState() = default;
 	void Init() override;
 	void Run() override;
 	void Exit() override;

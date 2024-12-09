@@ -21,7 +21,7 @@
 // FRC includes
 
 // Team 302 includes
-#include "mechanisms/climber/ClimbState.h"
+#include "mechanisms/climber/LowerHookState.h"
 #include "teleopcontrol/TeleopControl.h"
 #include "teleopcontrol/TeleopControlFunctions.h"
 #include "utils/logging/Logger.h"
@@ -33,31 +33,31 @@ using namespace std;
 
 /// @class ExampleForwardState
 /// @brief information about the control (open loop, closed loop position, closed loop velocity, etc.) for a mechanism state
-ClimbState::ClimbState(std::string stateName,
-					   int stateId,
-					   CANClimber *mech) : State(stateName, stateId), m_mechanism(mech)
+LowerHookState::LowerHookState(std::string stateName,
+							   int stateId,
+							   CANClimber *mech) : State(stateName, stateId), m_mechanism(mech)
 {
 }
 
-void ClimbState::Init()
+void LowerHookState::Init()
 {
 }
 
-void ClimbState::Run()
+void LowerHookState::Run()
 {
 	m_mechanism->SetClimberMotor(kClimberLowerMotorSpeed);
 }
 
-void ClimbState::Exit()
+void LowerHookState::Exit()
 {
 }
 
-bool ClimbState::AtTarget()
+bool LowerHookState::AtTarget()
 {
 	return true;
 }
 
-bool ClimbState::IsTransitionCondition(bool considerGamepadTransitions)
+bool LowerHookState::IsTransitionCondition(bool considerGamepadTransitions)
 {
 	// To get the current state use m_mechanism->GetCurrentState()
 

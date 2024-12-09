@@ -30,7 +30,6 @@ public:
         UNKNOWN_FUNCTION,
         ARCADE_THROTTLE,
         ARCADE_STEER,
-        READY,
         INTAKE,
         EXPEL,
         CLIMBER_RAISE,

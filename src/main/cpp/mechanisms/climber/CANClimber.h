@@ -19,7 +19,7 @@ public:
   enum STATE_NAMES
   {
     STATE_READY,
-    STATE_CLIMB,
+    STATE_LOWER,
     STATE_RAISE
   };
 
