@@ -21,7 +21,7 @@
 // FRC includes
 
 // Team 302 includes
-#include "mechanisms/climber/ReadyState.h"
+#include "mechanisms/climber/ClimberReadyState.h"
 #include "teleopcontrol/TeleopControl.h"
 #include "teleopcontrol/TeleopControlFunctions.h"
 #include "utils/logging/Logger.h"

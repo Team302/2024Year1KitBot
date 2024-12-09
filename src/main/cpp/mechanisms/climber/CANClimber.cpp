@@ -5,7 +5,7 @@
 #include "mechanisms/climber/CANClimber.h"
 #include "mechanisms/climber/RaiseState.h"
 #include "mechanisms/climber/ClimbState.h"
-#include "mechanisms/climber/ReadyState.h"
+#include "mechanisms/climber/ClimberReadyState.h"
 
 using namespace ClimberConstants;
 
