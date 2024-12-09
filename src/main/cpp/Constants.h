@@ -53,3 +53,10 @@ namespace LauncherConstants
 
     constexpr units::second_t kLauncherDelay = 1_s;
 } // namespace LauncherConstants
+namespace ClimberConstants
+{
+    constexpr double kClimberLowerMotorSpeed = -1;
+    constexpr double kClimberRaiseMotorSpeed = 1;
+    constexpr double kClimberMotorCurrent = 80;
+    constexpr int kClimberMotorID = 15;
+}

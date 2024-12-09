@@ -25,7 +25,7 @@
 #include "teleopcontrol/TeleopControl.h"
 #include "teleopcontrol/TeleopControlFunctions.h"
 #include "utils/logging/Logger.h"
-
+using namespace LauncherConstants;
 // Third Party Includes
 
 using namespace std;
@@ -44,8 +44,8 @@ void IntakeState::Init()
 
 void IntakeState::Run()
 {
-	m_mechanism->SetLaunchWheel(1.0);
-	m_mechanism->SetFeedWheel(1.0);
+	m_mechanism->SetLaunchWheel(kIntakeLauncherSpeed);
+	m_mechanism->SetFeedWheel(kIntakeFeederSpeed);
 }
 
 void IntakeState::Exit()

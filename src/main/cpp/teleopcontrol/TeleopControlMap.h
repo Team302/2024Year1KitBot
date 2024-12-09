@@ -160,10 +160,10 @@ robin_hood::unordered_map<TeleopControlFunctions::FUNCTION, const TeleopControlB
     //{TeleopControlFunctions::RESET_POSITION, driverDPad90},
     //{TeleopControlFunctions::RESET_POSITION, driverDPad270},
     //{TeleopControlFunctions::AUTO_STAGE, driverRStickPressed},
-    {TeleopControlFunctions::INTAKE, driverLBumper},
-    {TeleopControlFunctions::EXPEL, driverRBumper} //,
-    // {TeleopControlFunctions::DEBUG_INC_P, driverDPad0},
-    //{TeleopControlFunctions::ROBOT_ORIENTED_DRIVE, driverDPad0},
+    {TeleopControlFunctions::INTAKE, copilotLBumper},
+    {TeleopControlFunctions::EXPEL, copilotRBumper},
+    {TeleopControlFunctions::CLIMBER_RAISE, driverDPad0},
+    {TeleopControlFunctions::CLIMBER_LOWER, driverDPad180},
 
     //{TeleopControlFunctions::DEBUG_DEC_P, driverDPad180},
 
@@ -240,7 +240,7 @@ robin_hood::unordered_map<TeleopControlFunctions::FUNCTION, const TeleopControlA
     {TeleopControlFunctions::ARCADE_THROTTLE, driverLJoystickY},
     // {TeleopControlFunctions::HOLONOMIC_DRIVE_STRAFE, driverLJoystickX},
     // {TeleopControlFunctions::HOLONOMIC_DRIVE_ROTATE, driverRJoystickX},
-    {TeleopControlFunctions::ARCADE_STEER, driverRJoystickY}
+    {TeleopControlFunctions::ARCADE_STEER, driverRJoystickX}
     // {TeleopControlFunctions::MANUAL_PLACE, copilotLTrigger},
     // {TeleopControlFunctions::MANUAL_FEED, copilotRTrigger},
     // {TeleopControlFunctions::LAUNCH_ANGLE, copilotRJoystickY},
