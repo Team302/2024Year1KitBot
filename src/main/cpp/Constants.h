@@ -32,7 +32,7 @@ namespace DrivetrainConstants
     constexpr int kRightFrontID = 2;
 
     // Current limit for drivetrain motors
-    constexpr int kCurrentLimit = 60;
+    constexpr int kCurrentLimit = 40;
 } // namespace DrivetrainConstants
 
 namespace LauncherConstants
@@ -51,12 +51,12 @@ namespace LauncherConstants
     constexpr double kIntakeLauncherSpeed = 1;
     constexpr double kIntakeFeederSpeed = .2;
 
-    constexpr units::second_t kLauncherDelay = 1_s;
+    constexpr units::second_t kLauncherDelay = 1.5_s;
 } // namespace LauncherConstants
 namespace ClimberConstants
 {
-    constexpr double kClimberLowerMotorSpeed = -1;
-    constexpr double kClimberRaiseMotorSpeed = 1;
+    constexpr double kClimberLowerMotorSpeed = 1;
+    constexpr double kClimberRaiseMotorSpeed = -1;
     constexpr double kClimberMotorCurrent = 80;
     constexpr int kClimberMotorID = 15;
 }
