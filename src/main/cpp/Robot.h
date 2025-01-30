@@ -21,6 +21,7 @@
 
 #include "chassis/CANDrivetrain.h"
 #include "mechanisms/notemgr/CANLauncher.h"
+#include "mechanisms/climber/CANClimber.h"
 
 // class CyclePrimitives;
 class TeleopControl;
@@ -72,4 +73,5 @@ private:
     bool isFMSAttached = false;
     Drive *m_drive;
     CANLauncher *m_launcher;
+    CANClimber *m_climber;
 };
